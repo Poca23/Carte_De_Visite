@@ -212,13 +212,9 @@ button:hover {
   display: flex;
 }
 
-.recto .accent-bar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  z-index: 1;
+#card-recto,
+#card-verso {
+  border: 1px solid transparent;
 }
 
 .recto .sidebar {

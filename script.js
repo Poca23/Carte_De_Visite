@@ -114,7 +114,7 @@ function update() {
   applyBg(el("card-recto"), "bg-r", "135deg");
   applyBg(el("sidebar"), "sb", "180deg");
   applyBg(el("card-verso"), "bg-v", "135deg");
-  el("ab").style.background =
+  const brd =
     "linear-gradient(180deg," +
     v("c-ab1") +
     "," +
@@ -122,6 +122,9 @@ function update() {
     "," +
     v("c-ab3") +
     ")";
+  ["card-recto", "card-verso"].forEach((id) => {
+    el(id).style.borderImage = brd + " 1";
+  });
   const s1 = v("c-sep"),
     s2 = v("c-sep2");
   el("d-sep").style.background =
