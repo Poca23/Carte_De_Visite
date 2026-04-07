@@ -122,8 +122,8 @@ function update() {
     "," +
     v("c-ab3") +
     ")";
-  ["card-recto", "card-verso"].forEach((id) => {
-    el(id).style.borderImage = brd + " 1";
+  ["wrap-recto", "wrap-verso"].forEach((id) => {
+    el(id).style.background = brd;
   });
   const s1 = v("c-sep"),
     s2 = v("c-sep2");
