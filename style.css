@@ -399,3 +399,17 @@ button:hover {
     margin: 0;
   }
 }
+
+/* ── Drag & Drop ── */
+[draggable="true"] {
+  cursor: grab;
+  transition: opacity 0.15s;
+}
+[draggable="true"]:active {
+  cursor: grabbing;
+}
+.drag-over {
+  outline: 2px dashed #7bb88e;
+  outline-offset: 2px;
+  opacity: 0.6;
+}
