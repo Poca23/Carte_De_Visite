@@ -134,6 +134,11 @@
                     </div>
                     <div class="full"><label for="file-logo-r">Logo recto</label><input type="file" id="file-logo-r"
                             accept="image/*" onchange="loadImg(this,'logo-r')"></div>
+                    <div class="full"><label for="sz-logo-r">Taille logo recto</label>
+                        <input type="range" id="sz-logo-r" min="20" max="120" value="52"
+                            oninput="resizeImg('logo-r',this.value)">
+                    </div>
+
                     <div class="full"><label for="qr-url">URL QR Code</label><input type="text" id="qr-url"
                             value="https://portfolio-cnd.netlify.app/"></div>
                 </div>
@@ -144,6 +149,11 @@
                 <div class="grid">
                     <div class="full"><label for="file-logo-v">Logo verso</label><input type="file" id="file-logo-v"
                             accept="image/*" onchange="loadImg(this,'logo-v')"></div>
+                    <div class="full"><label for="sz-logo-v">Taille logo verso</label>
+                        <input type="range" id="sz-logo-v" min="40" max="200" value="90"
+                            oninput="resizeImg('logo-v',this.value)">
+                    </div>
+
                     <div><label for="vcompany">Société verso</label>
                         <div class="field">
                             <input type="text" id="vcompany" value="CND · Web Is Yours">

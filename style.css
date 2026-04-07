@@ -413,3 +413,8 @@ button:hover {
   outline-offset: 2px;
   opacity: 0.6;
 }
+
+input[type="range"] {
+  width: 100%;
+  accent-color: #7bb88e;
+}

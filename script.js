@@ -259,3 +259,11 @@ function swapNodes(a, b) {
 }
 
 initDrag();
+
+function resizeImg(id, val) {
+  const node = document.getElementById(id);
+  if (!node || node.tagName !== "IMG") return;
+  node.style.maxWidth = val + "px";
+  node.style.maxHeight = val + "px";
+  save();
+}
