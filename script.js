@@ -122,8 +122,9 @@ function update() {
     "," +
     v("c-ab3") +
     ")";
-  ["wrap-recto", "wrap-verso"].forEach((id) => {
-    el(id).style.background = brd;
+  ["card-recto", "card-verso"].forEach((id) => {
+    el(id).style.outline = "3px solid";
+    el(id).style.outlineColor = v("c-ab1");
   });
   const s1 = v("c-sep"),
     s2 = v("c-sep2");

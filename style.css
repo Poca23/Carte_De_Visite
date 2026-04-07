@@ -212,18 +212,15 @@ button:hover {
   display: flex;
 }
 
-.card-wrap {
-  border-radius: 12px;
-  padding: 3px;
-  display: inline-block;
-  background: linear-gradient(180deg, #c97b6b, #7bb88e, #89bdd3);
-}
-
-.card-wrap .card {
+.card {
   width: 321px;
   height: 208px;
-  flex-shrink: 0;
-  box-sizing: content-box;
+  border-radius: 9px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.8);
+  outline: 3px solid transparent;
+  outline-offset: 0;
 }
 
 .recto .sidebar {
