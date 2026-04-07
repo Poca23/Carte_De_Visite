@@ -355,14 +355,14 @@ button:hover {
   justify-content: center;
 }
 
-.verso .msg-tag {
+/* .verso .msg-tag {
   font-size: 0.48rem;
   border-radius: 20px;
   padding: 2px 9px;
   border: 1px solid;
   font-weight: 600;
   letter-spacing: 0.06em;
-}
+} */
 
 @media print {
   body {
