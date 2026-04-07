@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carte de visite — CND Web Is Yours</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Carte de visite — CND · Web Is Yours</h1>
+    <div class="layout">
+        <div class="left" id="left">
+
+            <div class="undo-row">
+                <button class="btn-gray" onclick="undo()">↩ Annuler</button>
+                <button class="btn-gray" onclick="redo()">↪ Rétablir</button>
+            </div>
+
+            <div class="panel">
+                <h2>🎨 Fonds &amp; Bordures</h2>
+                <div class="grid">
+                    <div><label>Fond recto</label>
+                        <div class="field"><input type="color" id="c-bg-r" value="#141414"><input type="color"
+                                id="c-bg-r2" value="#141414"><button class="gt" onclick="tg('bg-r')">⇌</button></div>
+                    </div>
+                    <div><label>Fond verso</label>
+                        <div class="field"><input type="color" id="c-bg-v" value="#0e0e0e"><input type="color"
+                                id="c-bg-v2" value="#0e0e0e"><button class="gt" onclick="tg('bg-v')">⇌</button></div>
+                    </div>
+                    <div><label>Sidebar</label>
+                        <div class="field"><input type="color" id="c-sb" value="#141414"><input type="color" id="c-sb2"
+                                value="#141414"><button class="gt" onclick="tg('sb')">⇌</button></div>
+                    </div>
+                    <div><label>Barre accent</label>
+                        <div class="field"><input type="color" id="c-ab1" value="#c97b6b"><input type="color" id="c-ab2"
+                                value="#7bb88e"><input type="color" id="c-ab3" value="#89bdd3"></div>
+                    </div>
+                    <div><label>Sépar. recto</label>
+                        <div class="field"><input type="color" id="c-sep" value="#ffffff"><input type="color"
+                                id="c-sep2" value="#ffffff"></div>
+                    </div>
+                    <div><label>Sépar. verso</label>
+                        <div class="field"><input type="color" id="c-vsep1" value="#c97b6b"><input type="color"
+                                id="c-vsep2" value="#7bb88e"><input type="color" id="c-vsep3" value="#89bdd3"></div>
+                    </div>
+                    <div><label>Bordure sidebar</label>
+                        <div class="field"><input type="color" id="c-sb-border" value="#ffffff"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>📇 Recto — Textes &amp; Couleurs</h2>
+                <div class="grid">
+                    <div><label>Société</label>
+                        <div class="field"><input type="text" id="company" value="CND · Web Is Yours"><input
+                                type="color" id="c-company" value="#7bb88e"><input type="color" id="c-company2"
+                                value="#7bb88e"><button class="gt" onclick="tg('company')">⇌</button></div>
+                    </div>
+                    <div><label>Nom</label>
+                        <div class="field"><input type="text" id="name" value="Claire Naudin"><input type="color"
+                                id="c-name" value="#e8e8e8"><input type="color" id="c-name2" value="#e8e8e8"><button
+                                class="gt" onclick="tg('name')">⇌</button></div>
+                    </div>
+                    <div><label>Poste</label>
+                        <div class="field"><input type="text" id="job" value="Développeuse Full Stack"><input
+                                type="color" id="c-job" value="#89bdd3"><input type="color" id="c-job2"
+                                value="#89bdd3"><button class="gt" onclick="tg('job')">⇌</button></div>
+                    </div>
+                    <div><label>Téléphone</label>
+                        <div class="field"><input type="text" id="phone" value="06 70 28 84 67"><input type="color"
+                                id="c-phone" value="#cccccc"><input type="color" id="c-phone2" value="#cccccc"><button
+                                class="gt" onclick="tg('phone')">⇌</button></div>
+                    </div>
+                    <div><label>Email</label>
+                        <div class="field"><input type="text" id="email" value="cndweb37@gmail.com"><input type="color"
+                                id="c-email" value="#cccccc"><input type="color" id="c-email2" value="#cccccc"><button
+                                class="gt" onclick="tg('email')">⇌</button></div>
+                    </div>
+                    <div><label>Site</label>
+                        <div class="field"><input type="text" id="site" value="portfolio-cnd.netlify.app"><input
+                                type="color" id="c-site" value="#cccccc"><input type="color" id="c-site2"
+                                value="#cccccc"><button class="gt" onclick="tg('site')">⇌</button></div>
+                    </div>
+                    <div><label>Icônes</label>
+                        <div class="field"><input type="color" id="c-ic" value="#89bdd3"><input type="color" id="c-ic2"
+                                value="#89bdd3"><button class="gt" onclick="tg('ic')">⇌</button></div>
+                    </div>
+                    <div class="full"><label>Logo recto</label><input type="file" accept="image/*"
+                            onchange="loadImg(this,'logo-r')"></div>
+                    <div class="full"><label>URL QR Code</label><input type="text" id="qr-url"
+                            value="https://portfolio-cnd.netlify.app/"></div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>🔁 Verso — Textes &amp; Couleurs</h2>
+                <div class="grid">
+                    <div class="full"><label>Logo verso</label><input type="file" accept="image/*"
+                            onchange="loadImg(this,'logo-v')"></div>
+                    <div><label>Société verso</label>
+                        <div class="field"><input type="text" id="vcompany" value="CND · Web Is Yours"><input
+                                type="color" id="c-vcompany" value="#7bb88e"><input type="color" id="c-vcompany2"
+                                value="#7bb88e"><button class="gt" onclick="tg('vcompany')">⇌</button></div>
+                    </div>
+                    <div><label>Accroche</label>
+                        <div class="field"><input type="text" id="accroche"
+                                value="Le web n'a de limite que votre imagination"><input type="color" id="c-accroche"
+                                value="#dddddd"><input type="color" id="c-accroche2" value="#dddddd"><button class="gt"
+                                onclick="tg('accroche')">⇌</button></div>
+                    </div>
+                    <div><label>Tag 1</label>
+                        <div class="field"><input type="text" id="msg1" value="Petits prix"><input type="color"
+                                id="c-msg1" value="#7bb88e"><input type="color" id="c-msg12" value="#7bb88e"><button
+                                class="gt" onclick="tg('msg1')">⇌</button></div>
+                    </div>
+                    <div><label>Tag 2</label>
+                        <div class="field"><input type="text" id="msg2" value="Maxi réactivité"><input type="color"
+                                id="c-msg2" value="#7bb88e"><input type="color" id="c-msg22" value="#7bb88e"><button
+                                class="gt" onclick="tg('msg2')">⇌</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn-blue" onclick="window.print()">🖨️ Imprimer / PDF</button>
+            </div>
+        </div>
+
+        <div class="right">
+            <div>
+                <div class="card-lbl">Recto</div>
+                <div class="card recto" id="card-recto">
+                    <div class="accent-bar" id="ab"></div>
+                    <div class="sidebar" id="sidebar">
+                        <div class="logo-ph" id="logo-r"><span>Logo<br>ici</span></div>
+                        <div id="qr-recto"></div>
+                    </div>
+                    <div class="main">
+                        <div class="company" id="d-company">CND · Web Is Yours</div>
+                        <div class="name" id="d-name">Claire Naudin</div>
+                        <div class="job" id="d-job">Développeuse Full Stack</div>
+                        <div class="sep" id="d-sep"></div>
+                        <div class="contact"><span class="ic" id="ic1">📞</span><span id="d-phone">06 70 28 84 67</span>
+                        </div>
+                        <div class="contact"><span class="ic" id="ic2">✉</span><span
+                                id="d-email">cndweb37@gmail.com</span></div>
+                        <div class="contact"><span class="ic" id="ic3">🌐</span><span
+                                id="d-site">portfolio-cnd.netlify.app</span></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card-lbl">Verso</div>
+                <div class="card verso" id="card-verso">
+                    <div class="logo-ph-big" id="logo-v"><span>Logo<br>grand</span></div>
+                    <div class="vcompany" id="d-vcompany">CND · Web Is Yours</div>
+                    <div class="vsep" id="d-vsep"></div>
+                    <div class="accroche" id="d-accroche">Le web n'a de limite que votre imagination</div>
+                    <div class="msgs">
+                        <div class="msg-tag" id="d-msg1">Petits prix</div>
+                        <div class="msg-tag" id="d-msg2">Maxi réactivité</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
