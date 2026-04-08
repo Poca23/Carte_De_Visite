@@ -20,7 +20,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 9px;
+  border-radius: inherit;
   padding: 3px;
   background: var(--card-border, #89bdd3);
   -webkit-mask:

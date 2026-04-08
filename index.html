@@ -42,9 +42,9 @@
           <div>
             <label>Contour cartes</label>
             <div class="field">
-              <input type="color" id="c-ab1" value="#c97b6b">
-              <input type="color" id="c-ab12" value="#7bb88e">
-              <input type="color" id="c-ab13" value="#89bdd3">
+              <input type="color" id="c-ab1" value="#c97b6b" aria-label="Contour carte couleur 1">
+              <input type="color" id="c-ab12" value="#7bb88e" aria-label="Contour carte couleur 2">
+              <input type="color" id="c-ab13" value="#89bdd3" aria-label="Contour carte couleur 3">
             </div>
             <div class="field" style="margin-top:3px;gap:8px;font-size:0.55rem;color:#888">
               <label style="display:flex;gap:3px;align-items:center"><input type="checkbox" id="ck-ab1" checked>
@@ -53,8 +53,9 @@
               <label style="display:flex;gap:3px;align-items:center"><input type="checkbox" id="ck-ab3"> C3</label>
             </div>
           </div>
-
-
+          <div><label>Arrondi coins</label>
+            <input type="range" id="c-radius" min="0" max="30" value="9" aria-label="Arrondi des coins">
+          </div>
           <div><label>Sidebar</label>
             <div class="field">
               <input type="color" id="c-sb" value="#141414" aria-label="Sidebar couleur 1">

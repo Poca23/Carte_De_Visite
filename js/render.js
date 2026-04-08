@@ -39,6 +39,11 @@ function update() {
   applyBg(el("card-recto"), "bg-r", "135deg");
   applyBg(el("sidebar"), "sb", "180deg");
   applyBg(el("card-verso"), "bg-v", "135deg");
+  const r = v("c-radius") + "px";
+  ["card-recto", "card-verso"].forEach((id) => {
+    el(id).style.borderRadius = r;
+  });
+
   ["card-recto", "card-verso"].forEach((id) => {
     const ck1 = el("ck-ab1")?.checked,
       ck2 = el("ck-ab2")?.checked,
