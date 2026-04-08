@@ -146,12 +146,7 @@
   max-width: 210px;
   line-height: 1.5;
 }
-.verso .msgs {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+
 [draggable="true"] {
   cursor: grab;
   transition: opacity 0.15s;

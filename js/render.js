@@ -99,21 +99,6 @@ function update() {
       applyTextColor(d, k);
     }
   });
-  ["msg1", "msg2"].forEach((k) => {
-    const t = el("d-" + k);
-    if (!t) return;
-    t.textContent = v(k);
-    const c1 = v("c-" + k),
-      c2 = v("c-" + k + "2");
-    if (gm[k] && c1 !== c2) {
-      t.style.borderImage = "linear-gradient(135deg," + c1 + "," + c2 + ") 1";
-      t.style.borderColor = "";
-    } else {
-      t.style.borderImage = "";
-      t.style.borderColor = c1;
-    }
-    applyTextColor(t, k);
-  });
 
   const qd = el("qr-recto");
   qd.innerHTML = "";
@@ -140,6 +125,4 @@ function update() {
   vis("vis-vcompany", "d-vcompany");
   vis("vis-vsep", "d-vsep");
   vis("vis-accroche", "d-accroche");
-  vis("vis-msgs", "d-msg1");
-  vis("vis-msgs", "d-msg2");
 }
