@@ -1,8 +1,8 @@
 <!-- FRENCH VERSION -->
 
-# 🃏 Éditeur de Carte de Visite — Aperçu Interactif
+# 🃏 Éditeur de Carte de Visite — CND · Web Is Yours
 
-Un éditeur de carte de visite léger et interactif, développé en HTML/CSS/JavaScript pur.  
+Un éditeur de carte de visite numérique **léger et interactif**, développé en HTML/CSS/JavaScript pur.  
 Personnalisez chaque élément, prévisualisez les modifications en temps réel et imprimez directement depuis le navigateur.
 
 > 💻 **Conçu pour une utilisation desktop.** L'interface de l'éditeur est optimisée pour les grands écrans.
@@ -19,23 +19,47 @@ Ouvrez simplement `index.html` dans un navigateur moderne.
 ## 📁 Structure du projet
 
 ```
-├── index.html          ← Fichier principal : mise en page de la carte + panneau éditeur
+├── index.html ← Fichier principal : mise en page de la carte + panneau éditeur
 ├── css/
-│   ├── main.css        ← Imports CSS centralisés
-│   ├── base.css        ← Reset, typographie, boutons globaux
-│   ├── layout.css      ← Disposition générale (panneau gauche / aperçu droit)
-│   ├── panel.css       ← Styles du panneau éditeur
-│   ├── card.css        ← Styles des cartes (recto & verso)
-│   └── print.css       ← Règles @media print
+│ ├── main.css ← Imports CSS centralisés
+│ ├── base.css ← Reset, typographie, boutons globaux
+│ ├── layout.css ← Disposition générale (panneau gauche / aperçu droit)
+│ ├── panel.css ← Styles du panneau éditeur
+│ ├── card.css ← Styles des cartes (recto & verso)
+│ └── print.css ← Règles @media print
 └── js/
-    ├── main.js         ← Point d'entrée, chargement des modules, écoute des inputs
-    ├── render.js       ← Fonction de mise à jour visuelle (couleurs, dégradés, textes, QR)
-    ├── history.js      ← Pile undo/redo + persistance localStorage
-    ├── drag.js         ← Drag & drop des éléments de la carte
-    └── media.js        ← Gestion de l'upload et du redimensionnement des logos
+├── main.js ← Point d'entrée, chargement des modules, écoute des inputs
+├── render.js ← Fonction de mise à jour visuelle (couleurs, dégradés, textes, QR)
+├── history.js ← Pile undo/redo + persistance localStorage
+├── drag.js ← Drag & drop des éléments de la carte
+└── media.js ← Gestion de l'upload et du redimensionnement des logos
 ```
 
----
+## 🃏 Contenu des deux faces
+
+### 🔵 Recto
+
+| Zone       | Contenu par défaut                 |
+| ---------- | ---------------------------------- |
+| Logo       | Upload possible (sidebar gauche)   |
+| QR Code    | Généré → portfolio-cnd.netlify.app |
+| Entreprise | CND · Web Is Yours                 |
+| Nom        | Claire Naudin                      |
+| Métier     | Développeuse Full Stack            |
+| Téléphone  | 06 70 28 84 67                     |
+| Email      | cndweb37@gmail.com                 |
+| Site       | portfolio-cnd.netlify.app          |
+
+### 🔷 Verso
+
+| Zone       | Contenu par défaut                             |
+| ---------- | ---------------------------------------------- |
+| Logo       | Upload possible (grand format, centré)         |
+| Entreprise | CND · Web Is Yours                             |
+| Séparateur | Barre dégradée tricolore                       |
+| Accroche   | _"Le web n'a de limite que votre imagination"_ |
+| Tag 1      | **Petits prix**                                |
+| Tag 2      | **Maxi réactivité**                            |
 
 ## ✏️ Fonctionnalités
 
@@ -71,15 +95,13 @@ Ouvrez simplement `index.html` dans un navigateur moderne.
 
 ### Persistance
 
-- Sauvegarde automatique dans le **localStorage** (debounce à 600ms)
+- Sauvegarde automatique dans le **localStorage** (debounce à 600 ms)
 - L'état est automatiquement restauré à la prochaine ouverture
 
 ### Export & Impression
 
 - Impression via le navigateur (`window.print()`)
 - Mise en page print optimisée : page A4, recto + verso côte à côte, panneau éditeur masqué
-
----
 
 ## 🎨 Palette de couleurs par défaut
 
@@ -96,13 +118,9 @@ Ouvrez simplement `index.html` dans un navigateur moderne.
 
 ### Dégradé signature
 
-```
 #c97b6b → #7bb88e → #89bdd3
-```
 
 Utilisé sur les séparateurs, bordures, mises en valeur textuelles et éléments tags.
-
----
 
 ## 📐 Format de la carte
 
@@ -113,25 +131,19 @@ Utilisé sur les séparateurs, bordures, mises en valeur textuelles et élément
 | Équivalent écran     | ≈ 321 × 208 px    |
 | Faces                | 2 (Recto + Verso) |
 
----
-
 ## 🔄 Fonctionnement
 
-```
 L'utilisateur modifie un champ
-          ↓
+↓
 Événement "input" capté (main.js)
-          ↓
+↓
 update() appelé (render.js)
-          ↓
+↓
 Aperçu de la carte mis à jour en temps réel
-          ↓
-save() appelé après 600ms (debounce)
-          ↓
+↓
+save() appelé après 600 ms (debounce)
+↓
 État stocké dans localStorage + pile d'historique
-```
-
----
 
 ## 🛠️ Stack technique
 
@@ -142,79 +154,94 @@ save() appelé après 600ms (debounce)
 | Framework         | Aucun                                 |
 | Serveur           | Aucun — ouvrir index.html directement |
 
----
-
 ## ⚙️ Principes de conception
 
-| Principe          | Application                                 |
-| ----------------- | ------------------------------------------- |
-| Simplicité        | Vanilla JS uniquement, modules minimalistes |
-| Zéro installation | Un seul index.html suffit à lancer l'outil  |
-| Offline-ready     | Seule dépendance externe : qrcodejs CDN     |
-| Extensible        | Architecture modulaire JS/CSS               |
-| UX fluide         | Debounce, localStorage, undo/redo           |
-
----
+| Principe          | Application                                  |
+| ----------------- | -------------------------------------------- |
+| Simplicité        | Vanilla JS uniquement, modules minimalistes  |
+| Zéro installation | Un seul `index.html` suffit à lancer l'outil |
+| Offline-ready     | Seule dépendance externe : qrcodejs CDN      |
+| Extensible        | Architecture modulaire JS/CSS                |
+| UX fluide         | Debounce, localStorage, undo/redo            |
 
 ## 📄 Licence
 
-Ce projet est libre d'utilisation, à titre personnel comme professionnel.  
+Ce projet est libre d'utilisation, à titre personnel comme professionnel.
 Adaptez-le librement à votre propre identité visuelle et vos coordonnées.
-
----
 
 ## 👩‍💻 Auteure
 
-Développé par **CND · Web Is Yours** © 2026
+Développé par **Claire Naudin — CND · Web Is Yours** © 2026
+_Développeuse Full Stack · Conceptrice Développeuse d'Applications_
+Indre-et-Loire (37) / Vienne (86) — disponible en full remote
 
-| Canal        | Lien                                                           |
-| ------------ | -------------------------------------------------------------- |
-| ✉ Email      | [cndweb37@gmail.com](mailto:cndweb37@gmail.com)                |
-| 🌐 Portfolio | [portfolio-cnd.netlify.app](https://portfolio-cnd.netlify.app) |
-| 🐙 GitHub    | [github.com/Poca23](https://github.com/Poca23)                 |
-
----
-
----
+| Canal        | Lien                                                                   |
+| ------------ | ---------------------------------------------------------------------- |
+| ✉ Email      | [cndweb37@gmail.com](mailto:cndweb37@gmail.com)                        |
+| 🌐 Portfolio | [portfolio-cnd.netlify.app](https://portfolio-cnd.netlify.app)         |
+| 🐙 GitHub    | [github.com/Poca23](https://github.com/Poca23)                         |
+| 💼 LinkedIn  | [linkedin.com/in/naudin-claire](https://linkedin.com/in/naudin-claire) |
 
 <!-- ENGLISH VERSION -->
 
-# 🃏 Business Card Editor — Interactive Preview Tool
+# 🃏 Business Card Editor — CND · Web Is Yours
 
-A lightweight, interactive business card editor built with pure HTML/CSS/JavaScript.  
+A lightweight, interactive **digital business card editor** built with pure HTML/CSS/JavaScript.
 Customize every element, preview changes in real time, and print your card directly from the browser.
 
 > 💻 **Designed for desktop use.** The editor interface is optimized for large screens.
 
----
-
 ## 🚀 Getting Started
 
-Simply open `index.html` in any modern browser.  
+Simply open `index.html` in any modern browser.
 **No installation. No server. No framework.**
-
----
 
 ## 📁 Project Structure
 
 ```
-├── index.html          ← Main file: card layout + editor panel
+
+├── index.html ← Main file: card layout + editor panel
 ├── css/
-│   ├── main.css        ← Central CSS imports
-│   ├── base.css        ← Reset, typography, global buttons
-│   ├── layout.css      ← General layout (left panel / right preview)
-│   ├── panel.css       ← Editor panel styles
-│   ├── card.css        ← Card styles (front & back)
-│   └── print.css       ← Print media rules
+│ ├── main.css ← Central CSS imports
+│ ├── base.css ← Reset, typography, global buttons
+│ ├── layout.css ← General layout (left panel / right preview)
+│ ├── panel.css ← Editor panel styles
+│ ├── card.css ← Card styles (front & back)
+│ └── print.css ← Print media rules
 └── js/
-    ├── main.js         ← Entry point, module loader, input listeners
-    ├── render.js       ← Visual update function (colors, gradients, text, QR)
-    ├── history.js      ← Undo/redo stack + localStorage persistence
-    ├── drag.js         ← Drag & drop for card elements
-    └── media.js        ← Logo upload and resize handling
+├── main.js ← Entry point, module loader, input listeners
+├── render.js ← Visual update function (colors, gradients, text, QR)
+├── history.js ← Undo/redo stack + localStorage persistence
+├── drag.js ← Drag & drop for card elements
+└── media.js ← Logo upload and resize handling
+
 ```
 
----
+## 🃏 Card Content
+
+### 🔵 Front face
+
+| Area      | Default content                            |
+| --------- | ------------------------------------------ |
+| Logo      | Uploadable (left sidebar)                  |
+| QR Code   | Auto-generated → portfolio-cnd.netlify.app |
+| Company   | CND · Web Is Yours                         |
+| Name      | Claire Naudin                              |
+| Job title | Full Stack Developer                       |
+| Phone     | 06 70 28 84 67                             |
+| Email     | cndweb37@gmail.com                         |
+| Website   | portfolio-cnd.netlify.app                  |
+
+### 🔷 Back face
+
+| Area      | Default content                              |
+| --------- | -------------------------------------------- |
+| Logo      | Uploadable (large format, centered)          |
+| Company   | CND · Web Is Yours                           |
+| Separator | Three-color gradient bar                     |
+| Tagline   | _"The web's only limit is your imagination"_ |
+| Tag 1     | **Affordable pricing**                       |
+| Tag 2     | **Maximum responsiveness**                   |
 
 ## ✏️ Features
 
@@ -250,15 +277,13 @@ Simply open `index.html` in any modern browser.
 
 ### Persistence
 
-- Auto-save to **localStorage** (debounced at 600ms)
+- Auto-save to **localStorage** (debounced at 600 ms)
 - State is automatically restored on next open
 
 ### Export & Print
 
 - Print via browser (`window.print()`)
 - Optimized print layout: A4 page, front + back side by side, editor panel hidden
-
----
 
 ## 🎨 Default Color Palette
 
@@ -275,13 +300,9 @@ Simply open `index.html` in any modern browser.
 
 ### Signature Gradient
 
-```
 #c97b6b → #7bb88e → #89bdd3
-```
 
 Used on separators, borders, text highlights and tag elements.
-
----
 
 ## 📐 Card Format
 
@@ -292,25 +313,19 @@ Used on separators, borders, text highlights and tag elements.
 | Screen equivalent | ≈ 321 × 208 px   |
 | Faces             | 2 (Front + Back) |
 
----
-
 ## 🔄 How It Works
 
-```
 User edits a field
-      ↓
+↓
 "input" event captured (main.js)
-      ↓
+↓
 update() called (render.js)
-      ↓
+↓
 Card preview updated in real time
-      ↓
+↓
 save() called after 600ms debounce
-      ↓
+↓
 State stored in localStorage + history stack
-```
-
----
 
 ## 🛠️ Tech Stack
 
@@ -321,33 +336,30 @@ State stored in localStorage + history stack
 | Framework        | None                            |
 | Server           | None — open index.html directly |
 
----
-
 ## ⚙️ Design Principles
 
 | Principle      | Implementation                           |
 | -------------- | ---------------------------------------- |
 | Keep it simple | Vanilla JS only, minimal modules         |
-| Zero install   | A single index.html is enough to run     |
+| Zero install   | A single `index.html` is enough to run   |
 | Offline-ready  | Only external dependency is qrcodejs CDN |
 | Extensible     | Modular JS/CSS architecture              |
 | Smooth UX      | Debounce, localStorage, undo/redo        |
 
----
-
 ## 📄 License
 
-This project is free to use for personal and professional purposes.  
+This project is free to use for personal and professional purposes.
 Feel free to adapt it to your own branding and contact details.
-
----
 
 ## 👩‍💻 Author
 
-Developed by **CND · Web Is Yours** © 2026
+Developed by **Claire Naudin — CND · Web Is Yours** © 2026
+_Full Stack Developer · Application Designer & Developer_
+Indre-et-Loire (37) / Vienne (86), France — open to full remote
 
-| Channel      | Link                                                           |
-| ------------ | -------------------------------------------------------------- |
-| ✉ Email      | [cndweb37@gmail.com](mailto:cndweb37@gmail.com)                |
-| 🌐 Portfolio | [portfolio-cnd.netlify.app](https://portfolio-cnd.netlify.app) |
-| 🐙 GitHub    | [github.com/Poca23](https://github.com/Poca23)                 |
+| Channel      | Link                                                                   |
+| ------------ | ---------------------------------------------------------------------- |
+| ✉ Email      | [cndweb37@gmail.com](mailto:cndweb37@gmail.com)                        |
+| 🌐 Portfolio | [portfolio-cnd.netlify.app](https://portfolio-cnd.netlify.app)         |
+| 🐙 GitHub    | [github.com/Poca23](https://github.com/Poca23)                         |
+| 💼 LinkedIn  | [linkedin.com/in/naudin-claire](https://linkedin.com/in/naudin-claire) |
