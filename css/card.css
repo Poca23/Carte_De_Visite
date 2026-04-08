@@ -64,12 +64,12 @@
 #qr-recto,
 #qr-recto canvas,
 #qr-recto img {
-  width: 65px !important;
-  height: 65px !important;
+  width: 80px !important;
+  height: 80px !important;
 }
 .recto .main {
   flex: 1;
-  padding: 13px 22px;
+  padding: 13px 18px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -97,7 +97,7 @@
 }
 .recto .sep {
   height: 1px;
-  width: 80%;
+  width: 90%;
   margin-top: 20px;
   /* margin-bottom: 2px; */
   opacity: 0.4;
@@ -115,7 +115,7 @@
   align-items: center;
   justify-content: center;
   padding: 16px;
-  gap: 6px;
+  gap: 10px;
   text-align: center;
 }
 .verso .logo-ph-big {

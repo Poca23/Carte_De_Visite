@@ -104,8 +104,8 @@ function update() {
   qd.innerHTML = "";
   new QRCode(qd, {
     text: v("qr-url") || "https://portfolio-cnd.netlify.app/",
-    width: 50,
-    height: 50,
+    width: 128,
+    height: 128,
     colorDark: "#111",
     colorLight: "#eee",
   });
