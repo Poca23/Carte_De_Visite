@@ -65,12 +65,30 @@ button:hover {
   object-fit: contain;
   opacity: 0.85;
   transition:
-    opacity 0.25s,
-    filter 0.25s;
+    color 0.3s,
+    box-shadow 0.3s;
   filter: brightness(1);
 }
 .site-footer .footer-logo:hover {
-  opacity: 1;
-  filter: drop-shadow(0 0 6px #7bb88e) drop-shadow(0 0 12px #89bdd3);
-  transition: 2s;
+  color: #7bb88e;
+  box-shadow:
+    0 0 8px #ffffff,
+    0 0 16px #5c5c5c;
+}
+
+.footer-link {
+  color: #7bb88e;
+  text-decoration: none;
+  transition:
+    color 0.3s,
+    text-shadow 0.3s;
+}
+.footer-link:hover {
+  color: #7bb88e;
+  text-shadow:
+    0 0 8px #7bb88e,
+    0 0 16px #89bdd3;
+}
+.footer-link:active {
+  color: #c97b6b;
 }
