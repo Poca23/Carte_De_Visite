@@ -1,0 +1,8 @@
+@media print {
+  body { background: #fff; display: block; }
+  .left, h1 { display: none !important; }
+  .layout { display: block; }
+  .right { position: static; width: 100%; height: auto; background: #fff; border: none; flex-direction: row; justify-content: center; gap: 18mm; padding: 15mm; }
+  .card { box-shadow: none; border: 0.3px solid #ccc; }
+  @page { size: A4; margin: 0; }
+}
