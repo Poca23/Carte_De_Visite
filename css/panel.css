@@ -20,6 +20,28 @@
   gap: 7px;
   margin-bottom: 7px;
 }
+
+/* ✅ Grille visibilité */
+.vis-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+.vis-grid label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.62rem;
+  color: #aaa;
+  text-transform: none;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+.vis-grid input[type="checkbox"] {
+  accent-color: #7bb88e;
+  cursor: pointer;
+}
+
 label {
   font-size: 0.6rem;
   color: #888;

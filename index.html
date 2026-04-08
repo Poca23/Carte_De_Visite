@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Visualiseur de carte — Card visualizer</title>
   <link rel="shortcut icon" href="/assets/logos/logo-dark-removebg-preview.png" type="image/x-icon">
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <link rel="stylesheet" href="css/main.css">
 </head>
@@ -20,6 +19,27 @@
         <button class="btn-gray" onclick="undo()">↩ Annuler</button>
         <button class="btn-gray" onclick="redo()">↪ Rétablir</button>
         <button class="btn-gray" onclick="localStorage.removeItem('cnd_card');location.reload()">🗑 Reset</button>
+      </div>
+
+      <div class="panel">
+        <h2>👁 Visibilité des éléments</h2>
+        <div class="vis-grid">
+          <label><input type="checkbox" id="vis-sidebar" checked> Sidebar</label>
+          <label><input type="checkbox" id="vis-logo-r" checked> Logo recto</label>
+          <label><input type="checkbox" id="vis-qr" checked> QR Code</label>
+          <label><input type="checkbox" id="vis-company" checked> Société recto</label>
+          <label><input type="checkbox" id="vis-name" checked> Nom</label>
+          <label><input type="checkbox" id="vis-job" checked> Poste</label>
+          <label><input type="checkbox" id="vis-sep" checked> Sépar. recto</label>
+          <label><input type="checkbox" id="vis-phone" checked> Téléphone</label>
+          <label><input type="checkbox" id="vis-email" checked> Email</label>
+          <label><input type="checkbox" id="vis-site" checked> Site</label>
+          <label><input type="checkbox" id="vis-logo-v" checked> Logo verso</label>
+          <label><input type="checkbox" id="vis-vcompany" checked> Société verso</label>
+          <label><input type="checkbox" id="vis-vsep" checked> Sépar. verso</label>
+          <label><input type="checkbox" id="vis-accroche" checked> Accroche</label>
+          <label><input type="checkbox" id="vis-msgs" checked> Tags verso</label>
+        </div>
       </div>
 
       <div class="panel">
@@ -227,7 +247,6 @@
       </div>
     </div>
   </div>
-
 
   <footer class="site-footer">
     Pour les professionnels et particuliers

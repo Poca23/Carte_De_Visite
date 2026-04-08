@@ -35,6 +35,12 @@ function applyBg(d, k, dir) {
       : c1;
 }
 
+// ✅ Gestion visibilité — 1 fonction, 1 ligne par élément
+function vis(checkId, targetId) {
+  const t = el(targetId);
+  if (t) t.style.display = el(checkId)?.checked ? "" : "none";
+}
+
 function update() {
   applyBg(el("card-recto"), "bg-r", "135deg");
   applyBg(el("sidebar"), "sb", "180deg");
@@ -59,6 +65,7 @@ function update() {
         : cols[0] || "#89bdd3";
     el(id).style.setProperty("--card-border", grad);
   });
+
   const s1 = v("c-sep"),
     s2 = v("c-sep2");
   el("d-sep").style.background =
@@ -74,6 +81,7 @@ function update() {
     v("c-vsep3") +
     ")";
   el("sidebar").style.borderRight = "1px solid " + v("c-sb-border");
+
   ["company", "name", "job", "phone", "email", "site"].forEach((k) => {
     const d = el("d-" + k),
       i = el(k);
@@ -106,6 +114,7 @@ function update() {
     }
     applyTextColor(t, k);
   });
+
   const qd = el("qr-recto");
   qd.innerHTML = "";
   new QRCode(qd, {
@@ -115,4 +124,22 @@ function update() {
     colorDark: "#111",
     colorLight: "#eee",
   });
+
+  // ✅ Visibilité — 1 ligne par élément
+  vis("vis-sidebar", "sidebar");
+  vis("vis-logo-r", "logo-r");
+  vis("vis-qr", "qr-recto");
+  vis("vis-company", "d-company");
+  vis("vis-name", "d-name");
+  vis("vis-job", "d-job");
+  vis("vis-sep", "d-sep");
+  vis("vis-phone", "d-phone");
+  vis("vis-email", "d-email");
+  vis("vis-site", "d-site");
+  vis("vis-logo-v", "logo-v");
+  vis("vis-vcompany", "d-vcompany");
+  vis("vis-vsep", "d-vsep");
+  vis("vis-accroche", "d-accroche");
+  vis("vis-msgs", "d-msg1");
+  vis("vis-msgs", "d-msg2");
 }
