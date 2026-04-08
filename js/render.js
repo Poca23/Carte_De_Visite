@@ -40,8 +40,19 @@ function update() {
   applyBg(el("sidebar"), "sb", "180deg");
   applyBg(el("card-verso"), "bg-v", "135deg");
   ["card-recto", "card-verso"].forEach((id) => {
-    el(id).style.outline = "3px solid";
-    el(id).style.outlineColor = v("c-ab1");
+    const ck1 = el("ck-ab1")?.checked,
+      ck2 = el("ck-ab2")?.checked,
+      ck3 = el("ck-ab3")?.checked;
+    const cols = [
+      ck1 && v("c-ab1"),
+      ck2 && v("c-ab12"),
+      ck3 && v("c-ab13"),
+    ].filter(Boolean);
+    const grad =
+      cols.length > 1
+        ? "linear-gradient(135deg," + cols.join(",") + ")"
+        : cols[0] || "#89bdd3";
+    el(id).style.setProperty("--card-border", grad);
   });
   const s1 = v("c-sep"),
     s2 = v("c-sep2");
