@@ -59,6 +59,7 @@ Ce projet est une **Progressive Web App** : il peut être installé sur votre ap
     ├── history.js      ← Pile undo/redo + persistance localStorage
     ├── drag.js         ← Drag & drop des éléments de la carte
     ├── media.js        ← Gestion de l'upload et du redimensionnement des logos
+    ├── export.js       ← Export PNG via html2canvas (recto + verso)
     └── register-sw.js  ← Enregistrement du Service Worker
 ```
 
@@ -131,8 +132,9 @@ Ce projet est une **Progressive Web App** : il peut être installé sur votre ap
 
 ### Export & Impression
 
-- Impression via le navigateur (`window.print()`)
+- 🖨️ Impression via le navigateur (`window.print()`)
 - Mise en page print optimisée : page A4, recto + verso côte à côte, panneau éditeur masqué
+- ⬇️ **Téléchargement PNG** — export haute résolution (×3) du recto et du verso via [html2canvas](https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js)
 
 ---
 
@@ -188,12 +190,12 @@ save() appelé après 600 ms (debounce)
 
 ## 🛠️ Stack technique
 
-| Critère           | Choix                             |
-| ----------------- | --------------------------------- |
-| Langages          | HTML5 / CSS3 / JavaScript vanilla |
-| Librairie externe | qrcodejs (CDN)                    |
-| Framework         | Aucun                             |
-| PWA               | manifest.json + Service Worker    |
+| Critère             | Choix                             |
+| ------------------- | --------------------------------- |
+| Langages            | HTML5 / CSS3 / JavaScript vanilla |
+| Librairies externes | qrcodejs (CDN), html2canvas (CDN) |
+| Framework           | Aucun                             |
+| PWA                 | manifest.json + Service Worker    |
 
 ---
 
@@ -294,6 +296,7 @@ This project is a **Progressive Web App**: it can be installed on your device an
     ├── history.js      ← Undo/redo stack + localStorage persistence
     ├── drag.js         ← Drag & drop for card elements
     ├── media.js        ← Logo upload and resize handling
+    ├── export.js       ← PNG export via html2canvas (front + back)
     └── register-sw.js  ← Service Worker registration
 ```
 
@@ -366,8 +369,9 @@ This project is a **Progressive Web App**: it can be installed on your device an
 
 ### Export & Print
 
-- Print via browser (`window.print()`)
+- 🖨️ Print via browser (`window.print()`)
 - Optimized print layout: A4 page, front + back side by side, editor panel hidden
+- ⬇️ **Download as PNG** — high-resolution export (×3 scale) of both faces via [html2canvas](https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js)
 
 ---
 
@@ -423,12 +427,12 @@ State stored in localStorage + history stack
 
 ## 🛠️ Tech Stack
 
-| Criteria         | Choice                         |
-| ---------------- | ------------------------------ |
-| Languages        | HTML5 / CSS3 / Vanilla JS      |
-| External library | qrcodejs (CDN)                 |
-| Framework        | None                           |
-| PWA              | manifest.json + Service Worker |
+| Criteria           | Choice                            |
+| ------------------ | --------------------------------- |
+| Languages          | HTML5 / CSS3 / Vanilla JS         |
+| External libraries | qrcodejs (CDN), html2canvas (CDN) |
+| Framework          | None                              |
+| PWA                | manifest.json + Service Worker    |
 
 ---
 
