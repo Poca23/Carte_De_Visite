@@ -24,7 +24,7 @@ body {
   justify-content: flex-start;
   gap: 24px;
   padding: 20px;
-  background: #0e0e0e;
+  background: transparent;
   overflow-y: auto;
 }
 .btn-row {

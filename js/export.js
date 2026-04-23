@@ -1,4 +1,3 @@
-// js/export.js
 async function exportPNG() {
   const r = document.getElementById("card-recto");
   const v = document.getElementById("card-verso");
@@ -18,16 +17,17 @@ async function exportPNG() {
     }),
   ]);
 
-  const gap = 30;
+  const gap = 60;
+  const pad = 60;
   const out = document.createElement("canvas");
-  out.width = cr.width + cv.width + gap;
-  out.height = Math.max(cr.height, cv.height) + 40;
+  out.width = Math.max(cr.width, cv.width) + pad * 2;
+  out.height = cr.height + cv.height + gap + pad * 2;
 
   const ctx = out.getContext("2d");
   ctx.fillStyle = "#111";
   ctx.fillRect(0, 0, out.width, out.height);
-  ctx.drawImage(cr, 0, 20);
-  ctx.drawImage(cv, cr.width + gap, 20);
+  ctx.drawImage(cr, pad, pad);
+  ctx.drawImage(cv, pad, pad + cr.height + gap);
 
   const a = document.createElement("a");
   a.download = "cartes-cnd.png";
