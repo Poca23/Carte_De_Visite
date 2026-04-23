@@ -17,6 +17,25 @@ function snapshot() {
   return s;
 }
 
+// Valeurs par défaut des champs texte
+function setDefaults() {
+  const d = {
+    company: "CND · Web Is Yours",
+    name: "Claire Naudin",
+    job: "Développeuse Full Stack",
+    phone: "06 70 28 84 67",
+    email: "cndweb37@gmail.com",
+    site: "portfolio-cnd.netlify.app",
+    vcompany: "CND · Web Is Yours",
+    accroche: "Le web n'a de limite que votre imagination",
+    "qr-url": "https://portfolio-cnd.netlify.app/",
+  };
+  Object.entries(d).forEach(([k, val]) => {
+    const el = document.getElementById(k);
+    if (el && !el.value) el.value = val;
+  });
+}
+
 function save() {
   hist.splice(cur + 1);
   hist.push(snapshot());

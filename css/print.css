@@ -1,8 +1,49 @@
+/* print.css */
 @media print {
-  body { background: #fff; display: block; }
-  .left, h1 { display: none !important; }
-  .layout { display: block; }
-  .right { position: static; width: 100%; height: auto; background: #fff; border: none; flex-direction: row; justify-content: center; gap: 18mm; padding: 15mm; }
-  .card { box-shadow: none; border: 0.3px solid #ccc; }
-  @page { size: A4; margin: 0; }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  h1,
+  .left,
+  footer,
+  .undo-row {
+    display: none !important;
+  }
+
+  .layout {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100vw;
+    height: 100vh;
+    gap: 10mm;
+    padding: 10mm;
+    box-sizing: border-box;
+  }
+
+  .right {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10mm;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
 }

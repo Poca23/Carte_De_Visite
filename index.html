@@ -11,8 +11,11 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <link rel="shortcut icon" href="/assets/logos/logo-dark-removebg-preview.png" type="image/x-icon">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <link rel="stylesheet" href="css/main.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 </head>
 
 <body>
@@ -212,7 +215,8 @@
       </div>
 
       <div class="btn-row">
-        <button class="btn-blue" onclick="window.print()">🖨️ Imprimer / PDF</button>
+        <button class="btn-blue" onclick="window.print()">🖨️ Imprimer</button>
+        <button class="btn-blue" onclick="exportPNG()">⬇️ Télécharger PNG</button>
       </div>
     </div>
 
