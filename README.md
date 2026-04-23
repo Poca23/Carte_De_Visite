@@ -14,26 +14,55 @@ Personnalisez chaque élément, prévisualisez les modifications en temps réel 
 Ouvrez simplement `index.html` dans un navigateur moderne.  
 **Aucune installation. Aucun serveur. Aucun framework.**
 
+> ⚠️ **PWA & Service Worker** : pour profiter du mode hors-ligne, servez le projet via un serveur HTTP local.
+>
+> ```bash
+> python3 -m http.server 8080
+> # ou
+> npx serve .
+> ```
+>
+> Puis ouvrez `http://localhost:8080`
+
+---
+
+## 📱 PWA — Application installable
+
+Ce projet est une **Progressive Web App** : il peut être installé sur votre appareil et fonctionne **hors-ligne**.
+
+| Fonctionnalité          | Status |
+| ----------------------- | ------ |
+| Installable             | ✅     |
+| Hors-ligne              | ✅     |
+| localStorage conservé   | ✅     |
+| Icônes natives          | ✅     |
+| Zéro dépendance ajoutée | ✅     |
+
 ---
 
 ## 📁 Structure du projet
 
 ```
-├── index.html ← Fichier principal : mise en page de la carte + panneau éditeur
+├── index.html          ← Fichier principal : mise en page de la carte + panneau éditeur
+├── manifest.json       ← Manifeste PWA (nom, icônes, couleurs, orientation)
+├── sw.js               ← Service Worker (cache offline)
 ├── css/
-│ ├── main.css ← Imports CSS centralisés
-│ ├── base.css ← Reset, typographie, boutons globaux
-│ ├── layout.css ← Disposition générale (panneau gauche / aperçu droit)
-│ ├── panel.css ← Styles du panneau éditeur
-│ ├── card.css ← Styles des cartes (recto & verso)
-│ └── print.css ← Règles @media print
+│   ├── main.css        ← Imports CSS centralisés
+│   ├── base.css        ← Reset, typographie, boutons globaux
+│   ├── layout.css      ← Disposition générale (panneau gauche / aperçu droit)
+│   ├── panel.css       ← Styles du panneau éditeur
+│   ├── card.css        ← Styles des cartes (recto & verso)
+│   └── print.css       ← Règles @media print
 └── js/
-├── main.js ← Point d'entrée, chargement des modules, écoute des inputs
-├── render.js ← Fonction de mise à jour visuelle (couleurs, dégradés, textes, QR)
-├── history.js ← Pile undo/redo + persistance localStorage
-├── drag.js ← Drag & drop des éléments de la carte
-└── media.js ← Gestion de l'upload et du redimensionnement des logos
+    ├── main.js         ← Point d'entrée, chargement des modules, écoute des inputs
+    ├── render.js       ← Fonction de mise à jour visuelle (couleurs, dégradés, textes, QR)
+    ├── history.js      ← Pile undo/redo + persistance localStorage
+    ├── drag.js         ← Drag & drop des éléments de la carte
+    ├── media.js        ← Gestion de l'upload et du redimensionnement des logos
+    └── register-sw.js  ← Enregistrement du Service Worker
 ```
+
+---
 
 ## 🃏 Contenu des deux faces
 
@@ -60,6 +89,8 @@ Ouvrez simplement `index.html` dans un navigateur moderne.
 | Accroche   | _"Le web n'a de limite que votre imagination"_ |
 | Tag 1      | **Petits prix**                                |
 | Tag 2      | **Maxi réactivité**                            |
+
+---
 
 ## ✏️ Fonctionnalités
 
@@ -103,6 +134,8 @@ Ouvrez simplement `index.html` dans un navigateur moderne.
 - Impression via le navigateur (`window.print()`)
 - Mise en page print optimisée : page A4, recto + verso côte à côte, panneau éditeur masqué
 
+---
+
 ## 🎨 Palette de couleurs par défaut
 
 | Rôle            | Couleur   |
@@ -118,9 +151,11 @@ Ouvrez simplement `index.html` dans un navigateur moderne.
 
 ### Dégradé signature
 
-#c97b6b → #7bb88e → #89bdd3
+`#c97b6b → #7bb88e → #89bdd3`
 
 Utilisé sur les séparateurs, bordures, mises en valeur textuelles et éléments tags.
+
+---
 
 ## 📐 Format de la carte
 
@@ -131,28 +166,36 @@ Utilisé sur les séparateurs, bordures, mises en valeur textuelles et élément
 | Équivalent écran     | ≈ 321 × 208 px    |
 | Faces                | 2 (Recto + Verso) |
 
+---
+
 ## 🔄 Fonctionnement
 
+```
 L'utilisateur modifie un champ
-↓
+        ↓
 Événement "input" capté (main.js)
-↓
+        ↓
 update() appelé (render.js)
-↓
+        ↓
 Aperçu de la carte mis à jour en temps réel
-↓
+        ↓
 save() appelé après 600 ms (debounce)
-↓
+        ↓
 État stocké dans localStorage + pile d'historique
+```
+
+---
 
 ## 🛠️ Stack technique
 
-| Critère           | Choix                                 |
-| ----------------- | ------------------------------------- |
-| Langages          | HTML5 / CSS3 / JavaScript vanilla     |
-| Librairie externe | qrcodejs (CDN)                        |
-| Framework         | Aucun                                 |
-| Serveur           | Aucun — ouvrir index.html directement |
+| Critère           | Choix                             |
+| ----------------- | --------------------------------- |
+| Langages          | HTML5 / CSS3 / JavaScript vanilla |
+| Librairie externe | qrcodejs (CDN)                    |
+| Framework         | Aucun                             |
+| PWA               | manifest.json + Service Worker    |
+
+---
 
 ## ⚙️ Principes de conception
 
@@ -160,19 +203,23 @@ save() appelé après 600 ms (debounce)
 | ----------------- | -------------------------------------------- |
 | Simplicité        | Vanilla JS uniquement, modules minimalistes  |
 | Zéro installation | Un seul `index.html` suffit à lancer l'outil |
-| Offline-ready     | Seule dépendance externe : qrcodejs CDN      |
+| Offline-ready     | Service Worker + cache statique              |
 | Extensible        | Architecture modulaire JS/CSS                |
 | UX fluide         | Debounce, localStorage, undo/redo            |
 
+---
+
 ## 📄 Licence
 
-Ce projet est libre d'utilisation, à titre personnel comme professionnel.
+Ce projet est libre d'utilisation, à titre personnel comme professionnel.  
 Adaptez-le librement à votre propre identité visuelle et vos coordonnées.
+
+---
 
 ## 👩‍💻 Auteure
 
-Développé par **Claire Naudin — CND · Web Is Yours** © 2026
-_Développeuse Full Stack · Conceptrice Développeuse d'Applications_
+Développé par **Claire Naudin — CND · Web Is Yours** © 2026  
+_Développeuse Full Stack · Conceptrice Développeuse d'Applications_  
 Indre-et-Loire (37) / Vienne (86) — disponible en full remote
 
 | Canal        | Lien                                                                   |
@@ -182,40 +229,75 @@ Indre-et-Loire (37) / Vienne (86) — disponible en full remote
 | 🐙 GitHub    | [github.com/Poca23](https://github.com/Poca23)                         |
 | 💼 LinkedIn  | [linkedin.com/in/naudin-claire](https://linkedin.com/in/naudin-claire) |
 
+---
+
+---
+
 <!-- ENGLISH VERSION -->
 
 # 🃏 Business Card Editor — CND · Web Is Yours
 
-A lightweight, interactive **digital business card editor** built with pure HTML/CSS/JavaScript.
+A lightweight, interactive **digital business card editor** built with pure HTML/CSS/JavaScript.  
 Customize every element, preview changes in real time, and print your card directly from the browser.
 
 > 💻 **Designed for desktop use.** The editor interface is optimized for large screens.
 
+---
+
 ## 🚀 Getting Started
 
-Simply open `index.html` in any modern browser.
+Simply open `index.html` in any modern browser.  
 **No installation. No server. No framework.**
+
+> ⚠️ **PWA & Service Worker**: to enable offline mode, serve the project via a local HTTP server.
+>
+> ```bash
+> python3 -m http.server 8080
+> # or
+> npx serve .
+> ```
+>
+> Then open `http://localhost:8080`
+
+---
+
+## 📱 PWA — Installable App
+
+This project is a **Progressive Web App**: it can be installed on your device and works **offline**.
+
+| Feature               | Status |
+| --------------------- | ------ |
+| Installable           | ✅     |
+| Offline support       | ✅     |
+| localStorage retained | ✅     |
+| Native icons          | ✅     |
+| Zero added dependency | ✅     |
+
+---
 
 ## 📁 Project Structure
 
 ```
-
-├── index.html ← Main file: card layout + editor panel
+├── index.html          ← Main file: card layout + editor panel
+├── manifest.json       ← PWA manifest (name, icons, colors, orientation)
+├── sw.js               ← Service Worker (offline cache)
 ├── css/
-│ ├── main.css ← Central CSS imports
-│ ├── base.css ← Reset, typography, global buttons
-│ ├── layout.css ← General layout (left panel / right preview)
-│ ├── panel.css ← Editor panel styles
-│ ├── card.css ← Card styles (front & back)
-│ └── print.css ← Print media rules
+│   ├── main.css        ← Central CSS imports
+│   ├── base.css        ← Reset, typography, global buttons
+│   ├── layout.css      ← General layout (left panel / right preview)
+│   ├── panel.css       ← Editor panel styles
+│   ├── card.css        ← Card styles (front & back)
+│   └── print.css       ← Print media rules
 └── js/
-├── main.js ← Entry point, module loader, input listeners
-├── render.js ← Visual update function (colors, gradients, text, QR)
-├── history.js ← Undo/redo stack + localStorage persistence
-├── drag.js ← Drag & drop for card elements
-└── media.js ← Logo upload and resize handling
-
+    ├── main.js         ← Entry point, module loader, input listeners
+    ├── render.js       ← Visual update function (colors, gradients, text, QR)
+    ├── history.js      ← Undo/redo stack + localStorage persistence
+    ├── drag.js         ← Drag & drop for card elements
+    ├── media.js        ← Logo upload and resize handling
+    └── register-sw.js  ← Service Worker registration
 ```
+
+---
 
 ## 🃏 Card Content
 
@@ -242,6 +324,8 @@ Simply open `index.html` in any modern browser.
 | Tagline   | _"The web's only limit is your imagination"_ |
 | Tag 1     | **Affordable pricing**                       |
 | Tag 2     | **Maximum responsiveness**                   |
+
+---
 
 ## ✏️ Features
 
@@ -285,6 +369,8 @@ Simply open `index.html` in any modern browser.
 - Print via browser (`window.print()`)
 - Optimized print layout: A4 page, front + back side by side, editor panel hidden
 
+---
+
 ## 🎨 Default Color Palette
 
 | Role             | Color     |
@@ -300,9 +386,11 @@ Simply open `index.html` in any modern browser.
 
 ### Signature Gradient
 
-#c97b6b → #7bb88e → #89bdd3
+`#c97b6b → #7bb88e → #89bdd3`
 
 Used on separators, borders, text highlights and tag elements.
+
+---
 
 ## 📐 Card Format
 
@@ -313,48 +401,60 @@ Used on separators, borders, text highlights and tag elements.
 | Screen equivalent | ≈ 321 × 208 px   |
 | Faces             | 2 (Front + Back) |
 
+---
+
 ## 🔄 How It Works
 
+```
 User edits a field
-↓
+        ↓
 "input" event captured (main.js)
-↓
+        ↓
 update() called (render.js)
-↓
+        ↓
 Card preview updated in real time
-↓
+        ↓
 save() called after 600ms debounce
-↓
+        ↓
 State stored in localStorage + history stack
+```
+
+---
 
 ## 🛠️ Tech Stack
 
-| Criteria         | Choice                          |
-| ---------------- | ------------------------------- |
-| Languages        | HTML5 / CSS3 / Vanilla JS       |
-| External library | qrcodejs (CDN)                  |
-| Framework        | None                            |
-| Server           | None — open index.html directly |
+| Criteria         | Choice                         |
+| ---------------- | ------------------------------ |
+| Languages        | HTML5 / CSS3 / Vanilla JS      |
+| External library | qrcodejs (CDN)                 |
+| Framework        | None                           |
+| PWA              | manifest.json + Service Worker |
+
+---
 
 ## ⚙️ Design Principles
 
-| Principle      | Implementation                           |
-| -------------- | ---------------------------------------- |
-| Keep it simple | Vanilla JS only, minimal modules         |
-| Zero install   | A single `index.html` is enough to run   |
-| Offline-ready  | Only external dependency is qrcodejs CDN |
-| Extensible     | Modular JS/CSS architecture              |
-| Smooth UX      | Debounce, localStorage, undo/redo        |
+| Principle      | Implementation                         |
+| -------------- | -------------------------------------- |
+| Keep it simple | Vanilla JS only, minimal modules       |
+| Zero install   | A single `index.html` is enough to run |
+| Offline-ready  | Service Worker + static cache          |
+| Extensible     | Modular JS/CSS architecture            |
+| Smooth UX      | Debounce, localStorage, undo/redo      |
+
+---
 
 ## 📄 License
 
-This project is free to use for personal and professional purposes.
+This project is free to use for personal and professional purposes.  
 Feel free to adapt it to your own branding and contact details.
+
+---
 
 ## 👩‍💻 Author
 
-Developed by **Claire Naudin — CND · Web Is Yours** © 2026
-_Full Stack Developer · Application Designer & Developer_
+Developed by **Claire Naudin — CND · Web Is Yours** © 2026  
+_Full Stack Developer · Application Designer & Developer_  
 Indre-et-Loire (37) / Vienne (86), France — open to full remote
 
 | Channel      | Link                                                                   |
